@@ -21,6 +21,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(join(__dirname, "public")));
 
+// Use JSON
+app.use(express.json());
+
+// Set up EJS
+app.set("view engine", "ejs");
+app.set("views", join(__dirname, "views"));
+
 // Test route
 app.get("/", (req, res) => res.send("Server running with MySQL!"));
 
