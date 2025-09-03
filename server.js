@@ -8,8 +8,10 @@ import { createBooksTable } from "./models/books.js";
 import authRoutes from "./routes/auth.js";
 import bookRoutes from "./routes/books.js";
 import userRoutes from "./routes/users.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
+app.use(cookieParser());
 const PORT = process.env.PORT || 3000;
 
 // Create tables
