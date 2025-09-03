@@ -15,9 +15,11 @@ export async function signup(e) {
     body: JSON.stringify(data),
   });
 
+  const result = await response.json();
+
   if (response.ok) {
     console.log("Go into profile, also set session storage.");
   } else {
-    console.log("Error");
+    console.log(result.message);
   }
 }
