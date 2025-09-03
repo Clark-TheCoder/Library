@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 router.get("/signup", (req, res) => {
-  res.send("Sign in Page");
+  res.render("signup");
 });
 
 router.get("/login", (req, res) => {
