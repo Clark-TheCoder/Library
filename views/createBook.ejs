@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Book</title>
+</head>
+
+<body>
+  <h1>Create Book</h1>
+
+  <form id="create_book_form">
+    <!-- Title -->
+    <div>
+      <label for="title">Book Title:</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+
+    <!-- Author -->
+    <div>
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required>
+    </div>
+
+    <!-- Genre -->
+    <div>
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" name="genre">
+    </div>
+
+    <!-- Rating -->
+    <div>
+      <label for="rating">Rating (1-5):</label>
+      <input type="number" id="rating" name="rating" min="1" max="5" required>
+    </div>
+
+    <!-- Personal Thoughts -->
+    <div>
+      <label for="thoughts">Personal Thoughts:</label>
+      <textarea id="thoughts" name="thoughts" rows="5" placeholder="Write your thoughts about the book..."></textarea>
+    </div>
+
+    <button type="submit">Save Book to Your Library</button>
+  </form>
+</body>
+
+
+</html>
