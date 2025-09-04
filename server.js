@@ -3,7 +3,7 @@ dotenv.config();
 import express from "express";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import { createUserTable } from "./models/users.js";
+import { createUserTable } from "./models/usersModel.js";
 import { createBooksTable } from "./models/books.js";
 import authRoutes from "./routes/auth.js";
 import bookRoutes from "./routes/books.js";
