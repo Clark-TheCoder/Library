@@ -19,7 +19,6 @@ export async function signup(e) {
 
   if (response.ok) {
     window.location.href = "/users/dashboard";
-    console.log("Go into profile, also set session storage.");
   } else {
     console.log(result.message);
   }
