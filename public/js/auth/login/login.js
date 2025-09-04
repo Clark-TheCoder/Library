@@ -10,12 +10,13 @@ export async function login(e) {
     const response = await fetch("/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(data),
     });
     const result = await response.json();
 
     if (response.ok) {
-      //window.location.href = "/users/dashboard";
+      window.location.href = "/users/dashboard";
     } else {
       console.log(result.message);
     }
