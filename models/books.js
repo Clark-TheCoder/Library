@@ -12,3 +12,21 @@ export async function createBooksTable() {
     FOREIGN KEY (user_id) REFERENCES users(id)
   );`);
 }
+
+export async function createNewBook(bookInfo) {
+  const sql =
+    "INSERT INTO books (title, author, genre, rating, thoughts) VALUES (?, ?, ?, ?, ?)";
+  const values = [
+    bookInfo.title,
+    bookInfo.author,
+    bookInfo.genre || null,
+    bookInfo.rating || null,
+    bookInfo.thoughts || null,
+  ];
+  try {
+    const [row] = await db.execute(sql, values);
+    return row;
+  } catch (error) {
+    return null;
+  }
+}
