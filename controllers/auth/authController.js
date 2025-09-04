@@ -4,6 +4,7 @@ import {
   getUserByUsername,
   getUserByEmail,
   createUser,
+  authenticateUser,
 } from "../../models/usersModel.js";
 
 export async function signupUser(req, res) {
@@ -48,6 +49,38 @@ export async function signupUser(req, res) {
     }
   } catch (error) {
     console.error(error);
+    return res.status(500).json({ message: "Server error" });
+  }
+}
+
+export async function loginUser(req, res) {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res
+      .status(400)
+      .json({ message: "Ensure all fields are filled out" });
+  }
+
+  try {
+    const user = await authenticateUser(username, password);
+    if (!user) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+
+    res.cookie("auth_token", token, {
+      httpOnly: true,
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "Strict",
+    });
+
+    return res.status(200).json({ message: "User logged in" });
+  } catch (error) {
     return res.status(500).json({ message: "Server error" });
   }
 }
