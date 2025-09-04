@@ -5,7 +5,7 @@ export async function login(e) {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const data = { username, password };
-  console.log(data);
+
   try {
     const response = await fetch("/auth/login", {
       method: "POST",
