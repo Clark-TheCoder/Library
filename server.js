@@ -18,13 +18,13 @@ const PORT = process.env.PORT || 3000;
 await createUserTable();
 await createBooksTable();
 
+// Use JSON
+app.use(express.json());
+
 // Serve static files
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(join(__dirname, "public")));
-
-// Use JSON
-app.use(express.json());
 
 // Set up EJS
 app.set("view engine", "ejs");
