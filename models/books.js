@@ -7,7 +7,7 @@ export async function createBooksTable() {
     author VARCHAR(255),
     genre VARCHAR(100),
     rating INT,
-    summary TEXT,
+    toughts TEXT,
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES users(id)
   );`);
@@ -15,8 +15,9 @@ export async function createBooksTable() {
 
 export async function createNewBook(bookInfo) {
   const sql =
-    "INSERT INTO books (title, author, genre, rating, thoughts) VALUES (?, ?, ?, ?, ?)";
+    "INSERT INTO books (user_id, title, author, genre, rating, thoughts) VALUES (?, ?, ?, ?, ?, ?)";
   const values = [
+    bookInfo.userId,
     bookInfo.title,
     bookInfo.author,
     bookInfo.genre || null,

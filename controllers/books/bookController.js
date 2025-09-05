@@ -1,6 +1,29 @@
+import dotenv from "dotenv";
+dotenv.config();
+import jwt from "jsonwebtoken";
 import { createNewBook } from "../../models/books.js";
 
 export async function addBook(req, res) {
+  // Get userID
+  const token = req.cookies.auth_token;
+  if (!token) {
+    return res.status(401).json({
+      message: "Not authenticated. Please log back in and try again.",
+    });
+  }
+
+  let decodedToken;
+  try {
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ message: "Invalid token. Please log back in and try again." });
+  }
+
+  const userId = decodedToken.id;
+
+  // Ensure required fields are present
   if (!req.body.title || !req.body.author) {
     return res
       .status(400)
@@ -8,6 +31,7 @@ export async function addBook(req, res) {
   }
 
   const bookData = {
+    userId,
     title: req.body.title,
     author: req.body.author,
     genre: req.body.genre || null,
@@ -18,7 +42,7 @@ export async function addBook(req, res) {
   try {
     const result = await createNewBook(bookData);
     if (result) {
-      return res.status(400).json({ message: "Entry saved to your library" });
+      return res.status(201).json({ message: "Entry saved to your library" });
     } else {
       return res
         .status(400)
