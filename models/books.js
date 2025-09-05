@@ -34,7 +34,7 @@ export async function createNewBook(bookInfo) {
 
 export async function getBooksByUserId(userId) {
   const sql =
-    "SELECT title, author, genre, rating, thoughts FROM BOOKS WHERE user_id = ?";
+    "SELECT id, title, author, genre, rating, thoughts FROM BOOKS WHERE user_id = ?";
   try {
     const [books] = await db.execute(sql, [userId]);
     return books;
