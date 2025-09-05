@@ -31,3 +31,14 @@ export async function createNewBook(bookInfo) {
     return null;
   }
 }
+
+export async function getBooksByUserId(userId) {
+  const sql =
+    "SELECT title, author, genre, rating, thoughts FROM BOOKS WHERE user_id = ?";
+  try {
+    const [books] = await db.execute(sql, [userId]);
+    return books;
+  } catch (error) {
+    return null;
+  }
+}
