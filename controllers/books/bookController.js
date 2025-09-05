@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";
-import { createNewBook } from "../../models/books.js";
+import { createNewBook, getBooksByUserId } from "../../models/books.js";
 
 export async function addBook(req, res) {
   // Get userID
@@ -48,6 +48,38 @@ export async function addBook(req, res) {
         .status(400)
         .json({ message: "Could not save your entry at this time" });
     }
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+}
+
+export async function getBooks(req, res) {
+  const token = req.cookies.auth_token;
+  if (!token) {
+    return res.status(401).json({
+      message: "Not authenticated. Please log back in and try again.",
+    });
+  }
+
+  let decodedToken;
+  try {
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ message: "Invalid token. Please log back in and try again." });
+  }
+
+  const userId = decodedToken.id;
+
+  try {
+    const books = await getBooksByUserId(userId);
+
+    if (!books) {
+      return res.status(404).json({ message: "No books found" });
+    }
+
+    res.json({ books });
   } catch (error) {
     return res.status(500).json({ message: "Server error" });
   }
