@@ -2,4 +2,10 @@
   border: 1px solid black;
   height: 200px;
   width: 300px;
+  background-color: orange;
+  z-index: 1000;
+}
+
+.enlarge_book {
+  scale: 1.7;
 }
