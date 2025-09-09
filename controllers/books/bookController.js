@@ -1,7 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";
-import { createNewBook, getBooksByUserId } from "../../models/books.js";
+import {
+  createNewBook,
+  getBooksByUserId,
+  deleteBookById,
+} from "../../models/books.js";
 
 export async function addBook(req, res) {
   // Get userID
@@ -80,6 +84,40 @@ export async function getBooks(req, res) {
     }
 
     res.json({ books });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+}
+
+export async function deleteBook(req, res) {
+  const { id } = req.params;
+  const token = req.cookies.auth_token;
+  if (!token) {
+    return res.status(401).json({
+      message: "Not authenticated. Please log back in and try again.",
+    });
+  }
+
+  let decodedToken;
+  try {
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ message: "Invalid token. Please log back in and try again." });
+  }
+
+  const userId = decodedToken.id;
+
+  try {
+    const result = await deleteBookById(id, userId);
+    if (result) {
+      return res.status(200).json({ message: "Book deleted successfully." });
+    } else {
+      return res
+        .status(404)
+        .json({ message: "Book not found or not authorized." });
+    }
   } catch (error) {
     return res.status(500).json({ message: "Server error" });
   }
