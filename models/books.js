@@ -42,3 +42,13 @@ export async function getBooksByUserId(userId) {
     return null;
   }
 }
+
+export async function deleteBookById(bookId, userId) {
+  const sql = "DELETE FROM books WHERE id = ? AND user_id = ?";
+  try {
+    const [result] = await db.execute(sql, [bookId, userId]);
+    return result.affectedRows > 0;
+  } catch (error) {
+    return null;
+  }
+}
