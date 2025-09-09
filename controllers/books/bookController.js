@@ -5,6 +5,7 @@ import {
   createNewBook,
   getBooksByUserId,
   deleteBookById,
+  getBookById,
 } from "../../models/books.js";
 
 export async function addBook(req, res) {
@@ -118,6 +119,35 @@ export async function deleteBook(req, res) {
         .status(404)
         .json({ message: "Book not found or not authorized." });
     }
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+}
+
+export async function getBook(req, res) {
+  const { id } = req.params;
+
+  const token = req.cookies.auth_token;
+  if (!token) {
+    return res.status(401).json({
+      message: "Not authenticated. Please log back in and try again.",
+    });
+  }
+
+  let decodedToken;
+  try {
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ message: "Invalid token. Please log back in and try again." });
+  }
+
+  const userId = decodedToken.id;
+
+  try {
+    const bookData = await getBookById(id, userId);
+    return res.status(200).json({ success: true, bookData });
   } catch (error) {
     return res.status(500).json({ message: "Server error" });
   }
