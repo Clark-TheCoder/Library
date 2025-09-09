@@ -16,4 +16,8 @@ router.get("/getBooks", getBooks);
 
 router.delete("/deleteBook/:id", deleteBook);
 
+router.get("/updateBook/:id", (req, res) => {
+  res.render("updateBook");
+});
+
 export default router;
