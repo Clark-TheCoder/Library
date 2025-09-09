@@ -1,4 +1,4 @@
-import { deleteBook } from "./deleteBook.js";
+import { deleteBook } from "../books/deleteBook/deleteBook.js";
 
 export async function selectBookFromLibrary(e) {
   const bookDiv = e.currentTarget;
@@ -50,11 +50,16 @@ function enlargeBook(bookDiv) {
 
         const confirmBtn = popup.querySelector(".confirm_button");
         confirmBtn.addEventListener("click", async () => {
-          deleteBook(bookDiv.dataset.bookId);
-          // await deleteBook(bookDiv.dataset.bookId);
-          // document
-          //   .querySelector(`[data-book-id="${bookDiv.dataset.bookId}"]`)
-          //   ?.remove();
+          let deletedBook = await deleteBook(bookDiv.dataset.bookId);
+          if (deletedBook.success === true) {
+            // Remove the book from the shelf
+            bookDiv.remove();
+
+            // Close the overlay
+            overlay.remove();
+          } else {
+            alert(deletedBook.message || "Error deleting book");
+          }
           overlay.remove();
         });
       }
