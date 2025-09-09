@@ -4,7 +4,6 @@ import { selectBookFromLibrary } from "./selectBook.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const books = await loadBooksIntoLibrary();
-  console.log(books);
 
   books.forEach((book) => {
     const shelf = document.getElementById("shelf");
