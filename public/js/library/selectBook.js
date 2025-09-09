@@ -33,6 +33,9 @@ function enlargeBook(bookDiv) {
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
     editBtn.classList.add("edit_btn");
+    editBtn.addEventListener("click", () => {
+      window.location.href = `/books/updateBook/${bookDiv.dataset.bookId}`;
+    });
     bookClone.appendChild(editBtn);
   }
 
