@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReadQuest</title>
+  <link rel="stylesheet" href="/css/landingPage.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="welcome_container">
+      <div class="welcome_content">
+        <img class="main_img" src="/media/landingPage/book-6.png" alt="Welcome">
+        <h2>WELCOME TO</h2>
+        <h1>ReadQuest</h1>
+        <h3>Track and rate your reads.</h3>
+        <div class="welcome_links">
+          <a id="login_link" href="/auth/login">Login</a>
+          <a id="signin_link" href="/auth/signup">Register</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function changeImage() {
+      let n = 0;
+      const imagePath = "/media/landingPage/";
+      const images = ["book.png", "book-2.png", "book-3.png", "book-4.png", "book-5.png", "book-6.png"];
+      const mainImage = document.querySelector(".main_img");
+      setInterval(() => {
+        n = (n + 1) % images.length;
+        mainImage.src = "/media/landingPage/" + images[n];
+      }, 3000)
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      changeImage();
+    });
+  </script>
+</body>
+
+</html>

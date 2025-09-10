@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #6e72ff;
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  height: 80%;
+  width: 70%;
+  min-width: fit-content;
+  min-height: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.welcome_container {
+  height: 100%;
+  width: 100%;
+  min-width: 150px;
+  min-height: 400px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px #4548a1;
+  background-color: rgba(240, 248, 255, 0.653);
+  padding: 30px;
+}
+
+.welcome_content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.main_img {
+  height: 60%;
+  object-fit: contain;
+  opacity: 0;
+  animation: blurIn 1s ease forwards;
+  animation-delay: 0s;
+  padding: 30px;
+}
+
+.welcome_content h1 {
+  font-size: clamp(2rem, 10vw, 8rem);
+  opacity: 0;
+  animation: blurIn 1s ease forwards;
+  animation-delay: 1s;
+  font-family: "DM Serif Display", serif;
+  color: #412945;
+}
+
+.welcome_content h2 {
+  font-family: Quicksand;
+  font-weight: 300;
+  letter-spacing: 10px;
+  color: #412945;
+  opacity: 0;
+  animation: blurIn 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.welcome_content h3 {
+  font-family: Quicksand;
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: #412945;
+  opacity: 0;
+  animation: blurIn 1s ease forwards;
+  animation-delay: 1.5s;
+  text-align: center;
+}
+
+.welcome_links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  margin: 30px;
+}
+
+.welcome_links a {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background-color: #b7ba6a;
+  border: 3px solid white;
+  color: white;
+  text-decoration: none;
+  border-radius: 999px; /* makes it oval */
+  font-family: Quicksand;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+  animation: blurIn 1s ease forwards;
+  animation-delay: 2s;
+}
+
+.welcome_links a:hover {
+  background-color: #8baff7;
+}
+
+@media (max-height: 600px) {
+  .main_img {
+    height: 50%;
+    padding: 10px;
+  }
+}
