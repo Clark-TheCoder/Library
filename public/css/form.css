@@ -10,7 +10,7 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
+/* 
 main {
   position: absolute;
   top: 50%;
@@ -25,6 +25,34 @@ main {
   background-color: rgba(240, 248, 255, 0.653);
   padding: 30px 50px;
   text-align: center;
+} */
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: fit-content;
+  min-width: 250px;
+  min-height: 400px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(240, 248, 255, 0.85),
+    rgba(208, 217, 226, 0.65)
+  );
+  border-radius: 0 15px 15px 0; /* flat on left (spine) */
+
+  /* book spine */
+  border-left: 35px solid #412945;
+
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.432),
+    inset 0 0 8px rgba(0, 0, 0, 0.1);
+
+  padding: 30px 50px;
+  text-align: center;
+  font-family: Quicksand, sans-serif;
 }
 
 h1 {
@@ -34,6 +62,8 @@ h1 {
   margin-bottom: 30px;
   animation: blurIn 1s ease forwards;
   opacity: 0;
+  border: 3px solid rgba(179, 175, 175, 0.205);
+  border-radius: 10px;
 }
 
 form {
