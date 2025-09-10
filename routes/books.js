@@ -4,6 +4,7 @@ import {
   getBooks,
   getBook,
   deleteBook,
+  updateBook,
 } from "../controllers/books/bookController.js";
 const router = express.Router();
 
@@ -20,6 +21,8 @@ router.delete("/deleteBook/:id", deleteBook);
 router.get("/updateBook/:id", (req, res) => {
   res.render("updateBook");
 });
+
+router.patch("/updateBook/:id", updateBook);
 
 router.get("/book/:id", getBook);
 
