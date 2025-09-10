@@ -5,29 +5,44 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/form.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <form id="signup_form">
-    <h2>Sign Up</h2>
+  <main>
+    <h1>Sign Up</h1>
+    <form id="signup_form">
+      <div class="error" id="errorMsg"></div>
 
-    <div class="error" id="errorMsg"></div>
+      <div class="form_group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Your Username" required>
+      </div>
 
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" placeholder="Your Username" required>
+      <div class="form_group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      <div class="form_group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+      </div>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="Enter password" required>
+      <div class="form_group">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password" required>
+      </div>
 
-    <label for="confirmPassword">Confirm Password</label>
-    <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password" required>
-
-    <button type="submit">Sign Up</button>
-  </form>
+      <button class="submit_btn" type="submit">Sign Up</button>
+    </form>
+    <p class="signup_text">Already have an account? <a href="/auth/login">Login</a></p>
+  </main>
 
   <script type="module" src="/js/auth/signup/index.js"></script>
 </body>
