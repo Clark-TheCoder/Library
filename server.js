@@ -31,7 +31,7 @@ app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));
 
 // Test route
-app.get("/", (req, res) => res.send("Server running with MySQL!"));
+app.get("/", (req, res) => res.render("landingPage"));
 
 // Auth routes
 app.use("/auth", authRoutes);
