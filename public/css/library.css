@@ -1,7 +1,69 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(223, 223, 247, 0.85);
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  height: 180px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #6e72ff;
+  border-radius: 15px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.title_container img {
+  height: 100px;
+}
+
+h1 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2rem, 8vw, 4rem);
+  margin-bottom: 30px;
+  animation: blurIn 1s ease forwards;
+  color: #f7ede5;
+}
+
+#shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 50px;
+  margin: 0 auto;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.book {
+  min-height: 300px;
+  min-width: 250px;
+  max-height: 300px;
+  max-width: 250px;
+  background: #bb91ff;
+  border-radius: 0 15px 15px 0;
+  /* book spine */
+  border-left: 25px solid #412945;
+  display: flex;
+  flex-direction: column;
 }
 
 .overlay {
