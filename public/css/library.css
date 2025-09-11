@@ -4,8 +4,12 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
+
 body {
-  background-color: rgba(223, 223, 247, 0.85);
+  background-color: #ebedb2;
   width: 100vw;
   height: 100vh;
 }
@@ -22,7 +26,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 90%;
+  width: 80%;
   height: 180px;
   padding: 20px;
   margin: 20px;
@@ -32,7 +36,7 @@ main {
 }
 
 .title_container img {
-  height: 100px;
+  height: 100%;
 }
 
 h1 {
@@ -41,16 +45,24 @@ h1 {
   margin-bottom: 30px;
   animation: blurIn 1s ease forwards;
   color: #f7ede5;
+  text-align: center;
 }
 
 #shelf {
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
-  padding: 50px;
-  margin: 0 auto;
   justify-content: center;
-  box-sizing: border-box;
+  width: 95%;
+  height: auto;
+  padding: 20px;
+  margin: 20px;
+  background: rgba(255, 255, 255, 0.452);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .book {
@@ -58,12 +70,51 @@ h1 {
   min-width: 250px;
   max-height: 300px;
   max-width: 250px;
-  background: #bb91ff;
-  border-radius: 0 15px 15px 0;
-  /* book spine */
-  border-left: 25px solid #412945;
+  border-radius: 5px;
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  font-family: "DM Serif Display", serif;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 50px 15px;
+}
+
+.book h2 {
+  font-family: "DM Serif Display";
+  font-weight: 500;
+  color: #412945;
+  border: 1px solid #34213884;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.book h3 {
+  font-family: Quicksand, sans-serif;
+  font-weight: 400;
+  font-size: medium;
+  color: #412945;
+}
+
+.stars_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.stars_container img {
+  height: 40px;
+  width: 40px;
+}
+
+.book:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 6px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .overlay {
@@ -94,4 +145,9 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.open_book {
+  border-top-left-radius: 50% 50px;
+  border-top-right-radius: 50% 50px;
 }
