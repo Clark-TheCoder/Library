@@ -26,10 +26,13 @@ main {
   width: 100%;
   min-width: 150px;
   min-height: 400px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px #4548a1;
-  background-color: rgba(240, 248, 255, 0.653);
   padding: 30px;
+  background: rgba(255, 255, 255, 0.452);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .welcome_content {
@@ -109,7 +112,7 @@ main {
   border: 3px solid white;
   color: white;
   text-decoration: none;
-  border-radius: 999px; /* makes it oval */
+  border-radius: 999px;
   font-family: Quicksand;
   font-weight: 500;
   transition: background 0.3s ease, transform 0.2s ease;
