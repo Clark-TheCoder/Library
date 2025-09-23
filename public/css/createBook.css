@@ -27,6 +27,7 @@ main {
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 60px;
 }
 
 h1 {
@@ -38,23 +39,15 @@ h1 {
 
 #create_book_form {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
-.form_pt1,
-.form_pt2 {
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
 label {
-  font-weight: 500;
+  font-weight: 600;
   color: #412945;
-  margin-bottom: 5px;
 }
 
 input {
@@ -64,6 +57,7 @@ input {
   font-family: Quicksand, sans-serif;
   font-size: 1rem;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -84,7 +78,6 @@ textarea {
   border-radius: 999px;
   border: none;
   color: white;
-  font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
   align-self: center;
@@ -92,6 +85,7 @@ textarea {
   white-space: nowrap;
   height: fit-content;
   border: 3px solid white;
+  font-weight: 600;
 }
 
 .submit_btn:hover {
