@@ -63,3 +63,27 @@ export async function getBookById(bookId, userId) {
     return null;
   }
 }
+
+export async function updateBookById(bookId, formData, userId) {
+  const sql = `
+    UPDATE books 
+    SET title = ?, author = ?, genre = ?, rating = ?, thoughts = ?
+    WHERE id = ? AND user_id = ?
+  `;
+
+  try {
+    const [result] = await db.execute(sql, [
+      formData.title,
+      formData.author,
+      formData.genre,
+      formData.rating,
+      formData.thoughts,
+      bookId,
+      userId,
+    ]);
+
+    return result.affectedRows > 0;
+  } catch (error) {
+    return null;
+  }
+}
