@@ -97,6 +97,21 @@ textarea {
   transform: translateY(-2px);
 }
 
+.nav_link {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  background-color: #0e2b3e7f;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: Quicksand;
+}
+
 @media (max-width: 850px) {
   main {
     padding: 30px 30px;
