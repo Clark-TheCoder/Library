@@ -1,11 +1,11 @@
 import { deleteBook } from "../books/deleteBook/deleteBook.js";
 
-export async function selectBookFromLibrary(e) {
-  const bookDiv = e.currentTarget;
-  enlargeBook(bookDiv);
-}
+// export async function selectBookFromLibrary(e) {
+//   const bookDiv = e.currentTarget;
+//   enlargeBook(bookDiv);
+// }
 
-function enlargeBook(bookDiv) {
+export function enlargeBook(bookDiv) {
   // Create overlay
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
@@ -13,68 +13,96 @@ function enlargeBook(bookDiv) {
 
   // Clone the book so the shelf version of the book stays in the shelf
   const bookClone = bookDiv.cloneNode(true);
-  bookClone.classList.add("enlarge_book");
 
-  // Add buttons only if they don’t already exist
-  // Return Button
-  if (!bookClone.querySelector(".return_btn")) {
-    const returnBtn = document.createElement("button");
-    returnBtn.textContent = "<";
-    returnBtn.classList.add("return_btn");
-    bookClone.appendChild(returnBtn);
+  // Create open book div
+  const openBook = document.createElement("div");
+  const rightPage = document.createElement("div");
+  const leftPage = document.createElement("div");
+  openBook.classList.add("open_book");
+  rightPage.classList.add("right_page");
+  leftPage.classList.add("left_page");
+  openBook.appendChild(leftPage);
+  openBook.appendChild(rightPage);
 
-    returnBtn.addEventListener("click", () => {
-      overlay.remove();
-    });
-  }
+  // Add containers
+  const buttonContainer = document.createElement("div");
+  const authorAndTitleConatiner = document.createElement("div");
+  const ratingContainer = document.createElement("div");
 
-  // Edit Button
-  if (!bookClone.querySelector(".edit_btn")) {
-    const editBtn = document.createElement("button");
-    editBtn.textContent = "Edit";
-    editBtn.classList.add("edit_btn");
-    editBtn.addEventListener("click", () => {
-      window.location.href = `/books/updateBook/${bookDiv.dataset.bookId}`;
-    });
-    bookClone.appendChild(editBtn);
-  }
+  // Style containers
+  buttonContainer.classList.add("button_continer");
 
-  // Delete Button
-  if (!bookClone.querySelector(".delete_btn")) {
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "x";
-    deleteBtn.classList.add("delete_btn");
-    bookClone.appendChild(deleteBtn);
-    deleteBtn.addEventListener("click", () => {
-      // Create confirm deletion
-      if (!bookClone.querySelector(".del_popup")) {
-        const popup = deleteBookPopup();
-        bookClone.appendChild(popup);
+  // Append containers to the pages of the book
+  rightPage.appendChild(buttonContainer);
 
-        const confirmBtn = popup.querySelector(".confirm_button");
-        confirmBtn.addEventListener("click", async () => {
-          let deletedBook = await deleteBook(bookDiv.dataset.bookId);
-          if (deletedBook.success === true) {
-            // Remove the book from the shelf
-            bookDiv.remove();
+  const englargedTitle = document.createElement("h1");
+  englargedTitle.textContent = bookDiv;
+  leftPage.appendChild(englargedTitle);
 
-            // Close the overlay
-            overlay.remove();
-          } else {
-            alert(deletedBook.message || "Error deleting book");
-          }
+  // Add elements
+
+  // Attach buttons to buttonContainer
+  const returnBtn = createReturnButton();
+  buttonContainer.appendChild(returnBtn);
+  const editBtn = createEditButton();
+  buttonContainer.appendChild(editBtn);
+  const deleteBtn = createDeleteButton();
+  buttonContainer.appendChild(deleteBtn);
+  deleteBtn.addEventListener("click", () => {
+    // Create confirm deletion
+    if (!bookClone.querySelector(".del_popup")) {
+      const popup = deleteBookPopup();
+      bookClone.appendChild(popup);
+      const confirmBtn = popup.querySelector(".confirm_button");
+      confirmBtn.addEventListener("click", async () => {
+        let deletedBook = await deleteBook(bookDiv.dataset.bookId);
+        if (deletedBook.success === true) {
+          // Remove the book from the shelf
+          bookDiv.remove();
+          // Close the overlay
           overlay.remove();
-        });
-      }
-    });
-  }
-
-  overlay.appendChild(bookClone);
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      overlay.remove();
+        } else {
+          alert(deletedBook.message || "Error deleting book");
+        }
+        overlay.remove();
+      });
     }
   });
+
+  overlay.appendChild(openBook);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.remove(); // remove overlay and book
+    }
+  });
+}
+
+function createReturnButton() {
+  const returnBtn = document.createElement("button");
+  returnBtn.textContent = "<";
+  returnBtn.classList.add("return_btn");
+  returnBtn.addEventListener("click", () => {
+    overlay.remove();
+  });
+  return returnBtn;
+}
+
+function createEditButton() {
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.classList.add("edit_btn");
+  editBtn.addEventListener("click", () => {
+    window.location.href = `/books/updateBook/${bookDiv.dataset.bookId}`;
+  });
+  return editBtn;
+}
+
+function createDeleteButton() {
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "x";
+  deleteBtn.style.color = "black";
+
+  return deleteBtn;
 }
 
 export function deleteBookPopup() {
@@ -105,3 +133,15 @@ export function deleteBookPopup() {
   popup.style.zIndex = "1000";
   return popup;
 }
+
+// Create elements inside the div
+// const titleAndAuthContainer = document.createElement("div");
+// const ratingContainer = document.createElement("div");
+// const title = document.createElement("h2");
+// const author = document.createElement("h3");
+// titleAndAuthContainer.appendChild(title);
+// titleAndAuthContainer.appendChild(author);
+// leftPage.appendChild(titleAndAuthContainer);
+// leftPage.appendChild(ratingContainer);
+
+//createBookButtons(bookClone);
