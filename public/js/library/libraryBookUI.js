@@ -125,7 +125,7 @@ export function enlargeBook(book) {
   // Add buttons to the button container
   const returnBtn = createReturnButton();
   buttonsContainer.appendChild(returnBtn);
-  const editBtn = createEditButton();
+  const editBtn = createEditButton(book);
   buttonsContainer.appendChild(editBtn);
   const deleteBtn = createDeleteButton();
   buttonsContainer.appendChild(deleteBtn);
@@ -160,12 +160,12 @@ function createReturnButton() {
   return returnBtn;
 }
 
-function createEditButton() {
+function createEditButton(book) {
   const editBtn = document.createElement("button");
   editBtn.textContent = "Edit";
   editBtn.classList.add("edit_btn");
   editBtn.addEventListener("click", () => {
-    window.location.href = `/books/updateBook/${bookDiv.dataset.bookId}`;
+    window.location.href = `/books/updateBook/${book.id}`;
   });
   return editBtn;
 }
