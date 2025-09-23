@@ -7,10 +7,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Get book data
   const book = await getBookData(bookId);
+
   if (!book || !book.bookData) {
     alert("This book has no data.");
     return;
   }
+
   // Get the form fields
   const form = document.getElementById("update_book_form");
   const title = document.getElementById("title");
@@ -29,24 +31,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Sumbit form
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    if (!title.value.trim()) {
-      alert("Title is required.");
-      return;
+    let isUpdated = await updateBook(bookId);
+    if (isUpdated) {
+      window.location.href = "/users/library";
+    } else if (!isUpdated) {
+      alert("Unable to update book at this time.");
     }
-    if (!author.value.trim()) {
-      alert("Author is required.");
-      return;
-    }
-
-    const formData = {
-      title: title.value,
-      author: author.value,
-      genre: genre.value || "",
-      rating: rating.value || "",
-      thoughts: thoughts.value || "",
-    };
-
-    await updateBook(bookId, formData);
   });
 });
