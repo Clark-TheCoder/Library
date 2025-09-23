@@ -9,9 +9,15 @@
 }
 
 body {
+  font-family: Quicksand;
   background-color: #ebedb2;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  position: relative;
 }
 
 main {
