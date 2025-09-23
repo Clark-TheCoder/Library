@@ -39,6 +39,8 @@ app.use("/auth", authRoutes);
 app.use("/books", bookRoutes);
 // User routes
 app.use("/users", userRoutes);
+// Error page
+app.get("/error", (req, res) => res.render("404"));
 
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
