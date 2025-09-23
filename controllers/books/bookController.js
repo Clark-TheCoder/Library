@@ -6,6 +6,7 @@ import {
   getBooksByUserId,
   deleteBookById,
   getBookById,
+  updateBookById,
 } from "../../models/books.js";
 
 export async function addBook(req, res) {
@@ -153,4 +154,34 @@ export async function getBook(req, res) {
   }
 }
 
-export async function updateBook(req, res) {}
+export async function updateBook(req, res) {
+  const token = req.cookies.auth_token;
+  if (!token) {
+    return res.status(401).json({
+      message: "Not authenticated. Please log back in and try again.",
+    });
+  }
+
+  let decodedToken;
+  try {
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ message: "Invalid token. Please log back in and try again." });
+  }
+
+  const userId = decodedToken.id;
+  const bookId = req.params.id;
+  const formData = req.body;
+
+  try {
+    const result = await updateBookById(bookId, formData, userId);
+    if (!result) {
+      return res.status(404).json({ message: "Book not found or not updated" });
+    }
+    return res.status(200).json({ message: "Book updated successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+}
