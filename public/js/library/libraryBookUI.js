@@ -131,7 +131,7 @@ export function enlargeBook(book) {
   buttonsContainer.appendChild(deleteBtn);
   deleteBtn.addEventListener("click", () => {
     // Create confirm deletion
-    const popup = deleteBookPopup();
+    const popup = deleteBookPopup(book);
     popup.classList.add("popup");
     document.body.appendChild(popup);
   });
@@ -177,7 +177,7 @@ function createDeleteButton() {
   return deleteBtn;
 }
 
-export function deleteBookPopup() {
+export function deleteBookPopup(book) {
   // Create elements for popup
   const popup = document.createElement("div");
   popup.classList.add("del_popup");
@@ -202,6 +202,15 @@ export function deleteBookPopup() {
   cancelBtn.addEventListener("click", () => {
     popup.remove();
     popupOverlay.remove();
+  });
+
+  confirmBtn.addEventListener("click", async () => {
+    let deletedBook = await deleteBook(book.id);
+    if (deletedBook) {
+      location.reload();
+    } else if (!deletedBook) {
+      window.location.href = "/error";
+    }
   });
 
   // Append elements
