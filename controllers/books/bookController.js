@@ -152,3 +152,5 @@ export async function getBook(req, res) {
     return res.status(500).json({ message: "Server error" });
   }
 }
+
+export async function updateBook(req, res) {}
