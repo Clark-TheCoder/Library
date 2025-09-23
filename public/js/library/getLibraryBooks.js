@@ -8,13 +8,11 @@ export async function loadBooksIntoLibrary() {
 
     let result = await response.json();
     if (!response.ok) {
-      console.log(result.message);
-      return [];
+      return false;
     } else {
       return result.books;
     }
   } catch (error) {
-    console.log(error);
-    return [];
+    return false;
   }
 }
