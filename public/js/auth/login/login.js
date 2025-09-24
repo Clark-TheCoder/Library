@@ -1,6 +1,4 @@
-export async function login(e) {
-  e.preventDefault();
-
+export async function login() {
   // Get the form field values
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -13,14 +11,17 @@ export async function login(e) {
       credentials: "include",
       body: JSON.stringify(data),
     });
-    const result = await response.json();
 
     if (response.ok) {
       window.location.href = "/users/dashboard";
-    } else {
-      console.log(result.message);
+    } else if (response.status === 400) {
+      alert("Please fill out all required fields");
+    } else if (response.status === 401) {
+      alert("Incorrect login credentials");
+    } else if (response.status === 404) {
+      alert("We are having trouble locating this service");
     }
   } catch (error) {
-    window.location.href = "/error";
+    alert("Something went wrong. Please check your connection and try again.");
   }
 }
