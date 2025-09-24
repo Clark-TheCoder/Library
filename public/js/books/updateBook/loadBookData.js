@@ -7,13 +7,11 @@ export async function getBookData(bookId) {
 
     let data = await response.json();
     if (response.ok) {
-      console.log(data);
       return { success: true, message: data.message, bookData: data.bookData };
     } else {
-      return { success: false, message: data.message };
+      window.location.href = "/error";
     }
   } catch (error) {
-    console.log(error);
+    window.location.href = "/error";
   }
-  console.log("hi");
 }

@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const book = await getBookData(bookId);
 
   if (!book || !book.bookData) {
-    alert("This book has no data.");
     return;
   }
 
@@ -34,8 +33,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let isUpdated = await updateBook(bookId);
     if (isUpdated) {
       window.location.href = "/users/library";
-    } else if (!isUpdated) {
-      alert("Unable to update book at this time.");
     }
   });
 });

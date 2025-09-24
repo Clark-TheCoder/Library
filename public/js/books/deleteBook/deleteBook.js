@@ -12,7 +12,6 @@ export async function deleteBook(bookId) {
     console.log("Delete success:", data.message);
     return { success: true, message: data.message };
   } catch (error) {
-    console.error("Network error:", error);
-    return false;
+    window.location.href = "/error";
   }
 }

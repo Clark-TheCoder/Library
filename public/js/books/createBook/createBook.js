@@ -25,6 +25,6 @@ export async function createBook(e) {
       window.location.href = "/users/library";
     }
   } catch (error) {
-    console.log(error);
+    window.location.href = "/error";
   }
 }

@@ -13,6 +13,6 @@ export async function loadBooksIntoLibrary() {
       return result.books;
     }
   } catch (error) {
-    return false;
+    alert("Trouble contacting server. Could not get your books at this time.");
   }
 }

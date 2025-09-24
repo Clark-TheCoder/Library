@@ -23,10 +23,11 @@ export async function updateBook(bookId) {
     });
 
     if (!response.ok) {
-      return false;
+      window.location.href = "/error";
+    } else {
+      return true;
     }
-    return true;
   } catch (error) {
-    console.log(error);
+    window.location.href = "/error";
   }
 }
