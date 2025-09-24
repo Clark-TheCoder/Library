@@ -10,24 +10,7 @@ import {
 } from "../../models/books.js";
 
 export async function addBook(req, res) {
-  // Get userID
-  const token = req.cookies.auth_token;
-  if (!token) {
-    return res.status(401).json({
-      message: "Not authenticated. Please log back in and try again.",
-    });
-  }
-
-  let decodedToken;
-  try {
-    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (err) {
-    return res
-      .status(401)
-      .json({ message: "Invalid token. Please log back in and try again." });
-  }
-
-  const userId = decodedToken.id;
+  const userId = req.user.id;
 
   // Ensure required fields are present
   if (!req.body.title || !req.body.author) {
@@ -60,23 +43,7 @@ export async function addBook(req, res) {
 }
 
 export async function getBooks(req, res) {
-  const token = req.cookies.auth_token;
-  if (!token) {
-    return res.status(401).json({
-      message: "Not authenticated. Please log back in and try again.",
-    });
-  }
-
-  let decodedToken;
-  try {
-    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (err) {
-    return res
-      .status(401)
-      .json({ message: "Invalid token. Please log back in and try again." });
-  }
-
-  const userId = decodedToken.id;
+  const userId = req.user.id;
 
   try {
     const books = await getBooksByUserId(userId);
@@ -93,23 +60,7 @@ export async function getBooks(req, res) {
 
 export async function deleteBook(req, res) {
   const { id } = req.params;
-  const token = req.cookies.auth_token;
-  if (!token) {
-    return res.status(401).json({
-      message: "Not authenticated. Please log back in and try again.",
-    });
-  }
-
-  let decodedToken;
-  try {
-    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (err) {
-    return res
-      .status(401)
-      .json({ message: "Invalid token. Please log back in and try again." });
-  }
-
-  const userId = decodedToken.id;
+  const userId = req.user.id;
 
   try {
     const result = await deleteBookById(id, userId);
@@ -127,24 +78,7 @@ export async function deleteBook(req, res) {
 
 export async function getBook(req, res) {
   const { id } = req.params;
-
-  const token = req.cookies.auth_token;
-  if (!token) {
-    return res.status(401).json({
-      message: "Not authenticated. Please log back in and try again.",
-    });
-  }
-
-  let decodedToken;
-  try {
-    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (err) {
-    return res
-      .status(401)
-      .json({ message: "Invalid token. Please log back in and try again." });
-  }
-
-  const userId = decodedToken.id;
+  const userId = req.user.id;
 
   try {
     const bookData = await getBookById(id, userId);
@@ -155,25 +89,9 @@ export async function getBook(req, res) {
 }
 
 export async function updateBook(req, res) {
-  const token = req.cookies.auth_token;
-  if (!token) {
-    return res.status(401).json({
-      message: "Not authenticated. Please log back in and try again.",
-    });
-  }
-
-  let decodedToken;
-  try {
-    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (err) {
-    return res
-      .status(401)
-      .json({ message: "Invalid token. Please log back in and try again." });
-  }
-
-  const userId = decodedToken.id;
   const bookId = req.params.id;
   const formData = req.body;
+  const userId = req.user.id;
 
   try {
     const result = await updateBookById(bookId, formData, userId);
