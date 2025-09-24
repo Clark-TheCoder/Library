@@ -64,7 +64,7 @@ export async function loginUser(req, res) {
   try {
     const user = await authenticateUser(username, password);
     if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Invalid credentials" });
     }
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
