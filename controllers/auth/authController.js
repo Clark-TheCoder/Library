@@ -48,7 +48,6 @@ export async function signupUser(req, res) {
       return res.status(500).json({ message: "Failed to create user" });
     }
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ message: "Server error" });
   }
 }
@@ -99,3 +98,5 @@ export function logoutUser(req, res) {
     return res.status(500).json({ message: "Server error" });
   }
 }
+
+export async function updateUser(req, res) {}

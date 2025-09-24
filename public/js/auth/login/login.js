@@ -21,6 +21,6 @@ export async function login(e) {
       console.log(result.message);
     }
   } catch (error) {
-    return error;
+    window.location.href = "/error";
   }
 }
