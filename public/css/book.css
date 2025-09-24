@@ -107,15 +107,18 @@
   justify-content: center;
   gap: 50px;
   padding: 20px;
+  text-align: center;
 }
 
 .left_page {
+  font-family: "DM Serif Display";
   border-left: #412945 solid 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 50px;
   padding: 20px;
+  text-align: center;
 }
 
 button {
