@@ -1,7 +1,7 @@
 export async function signup(e) {
   e.preventDefault();
 
-  // Get the form field values
+  //Get the form field values
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -9,18 +9,20 @@ export async function signup(e) {
 
   const data = { username, email, password, confirmPassword };
 
-  const response = await fetch("/auth/signup", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify(data),
-  });
-
-  const result = await response.json();
-
-  if (response.ok) {
-    window.location.href = "/users/dashboard";
-  } else {
-    console.log(result.message);
+  try {
+    const response = await fetch("/auths/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    if (response.ok) {
+      window.location.href = "/users/dashboard";
+    } else {
+      alert(result.message);
+    }
+  } catch (error) {
+    window.location.href = "/error";
   }
 }
