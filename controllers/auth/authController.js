@@ -84,3 +84,18 @@ export async function loginUser(req, res) {
     return res.status(500).json({ message: "Server error" });
   }
 }
+
+export function logoutUser(req, res) {
+  try {
+    // Clear the auth_token cookie
+    res.clearCookie("auth_token", {
+      httpOnly: true,
+      sameSite: "Strict",
+      secure: false, // set true if using HTTPS
+    });
+
+    return res.status(200).json({ message: "User logged out" });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+}
