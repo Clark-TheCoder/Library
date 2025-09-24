@@ -6,24 +6,25 @@ import {
   deleteBook,
   updateBook,
 } from "../controllers/books/bookController.js";
+import { authenticateUser } from "../middleware/authenticateUser.js";
 const router = express.Router();
 
-router.get("/createBook", (req, res) => {
+router.get("/createBook", authenticateUser, (req, res) => {
   res.render("createBook");
 });
 
-router.post("/createBook", addBook);
+router.post("/createBook", authenticateUser, addBook);
 
-router.get("/getBooks", getBooks);
+router.get("/getBooks", authenticateUser, getBooks);
 
-router.delete("/deleteBook/:id", deleteBook);
+router.delete("/deleteBook/:id", authenticateUser, deleteBook);
 
-router.get("/updateBook/:id", (req, res) => {
+router.get("/updateBook/:id", authenticateUser, (req, res) => {
   res.render("updateBook");
 });
 
-router.patch("/updateBook/:id", updateBook);
+router.patch("/updateBook/:id", authenticateUser, updateBook);
 
-router.get("/book/:id", getBook);
+router.get("/book/:id", authenticateUser, getBook);
 
 export default router;
