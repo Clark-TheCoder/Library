@@ -9,7 +9,7 @@ import authRoutes from "./routes/auth.js";
 import bookRoutes from "./routes/books.js";
 import userRoutes from "./routes/users.js";
 import cookieParser from "cookie-parser";
-import { getQuote } from "./controllers/api/apiController.js";
+import { getQuote, getBestSellers } from "./controllers/api/apiController.js";
 
 const app = express();
 app.use(cookieParser());
@@ -45,6 +45,9 @@ app.get("/error", (req, res) => res.render("404"));
 
 // Quote API
 app.get("/getQuote", getQuote);
+
+// Best Sellers API
+app.get("/getBestSellers", getBestSellers);
 
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
