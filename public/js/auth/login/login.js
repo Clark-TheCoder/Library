@@ -22,6 +22,6 @@ export async function login() {
       alert("We are having trouble locating this service");
     }
   } catch (error) {
-    alert("Something went wrong. Please check your connection and try again.");
+    window.location.href = "/error";
   }
 }

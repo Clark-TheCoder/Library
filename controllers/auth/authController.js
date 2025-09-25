@@ -18,10 +18,10 @@ export async function signupUser(req, res) {
   try {
     // Check email and username first avoid duplicates
     if (await getUserByUsername(username)) {
-      return res.status(400).json({ message: "Username already taken" });
+      return res.status(409).json({ message: "Username already taken" });
     }
     if (await getUserByEmail(email)) {
-      return res.status(400).json({ message: "Email already registered" });
+      return res.status(409).json({ message: "Email already registered" });
     }
 
     // Hash password
@@ -45,7 +45,7 @@ export async function signupUser(req, res) {
 
       return res.status(201).json({ message: "User created" });
     } else {
-      return res.status(500).json({ message: "Failed to create user" });
+      return res.status(400).json({ message: "Failed to create user" });
     }
   } catch (error) {
     return res.status(500).json({ message: "Server error" });
