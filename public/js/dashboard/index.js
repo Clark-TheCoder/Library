@@ -1,3 +1,4 @@
+import { getBestSellers } from "./api/getBestSellers.js";
 import { getQuote } from "./api/getQuote.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -6,4 +7,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   let { text, author } = await getQuote();
   quote.innerHTML = text;
   quotedBy.innerHTML = author;
+
+  await getBestSellers();
 });
