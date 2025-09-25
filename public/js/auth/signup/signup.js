@@ -1,6 +1,4 @@
-export async function signup(e) {
-  e.preventDefault();
-
+export async function signup() {
   //Get the form field values
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
@@ -10,7 +8,7 @@ export async function signup(e) {
   const data = { username, email, password, confirmPassword };
 
   try {
-    const response = await fetch("/auths/signup", {
+    const response = await fetch("/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
