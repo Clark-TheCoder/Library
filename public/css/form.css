@@ -10,22 +10,6 @@ body {
   width: 100vw;
   height: 100vh;
 }
-/* 
-main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: fit-content;
-  width: fit-content;
-  min-width: 150px;
-  min-height: 400px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px #4548a1;
-  background-color: rgba(240, 248, 255, 0.653);
-  padding: 30px 50px;
-  text-align: center;
-} */
 
 main {
   position: absolute;
