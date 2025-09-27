@@ -33,7 +33,6 @@ export async function updateUser() {
     const data = await response.json();
 
     if (response.ok) {
-      console.log("Updated successfully:", data.message);
       alert(data.message);
     } else {
       alert(data.message || "Could not update user credentials at this time.");
