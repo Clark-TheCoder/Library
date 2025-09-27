@@ -6,11 +6,25 @@ export async function getBestSellers() {
 
     let data = await response.json();
     if (response.ok) {
-      console.log(data);
+      return data;
     } else {
-      console.log("not okay");
+      return [
+        {
+          title: "Oh No!",
+          author: "Cannot get books",
+          rank: "?",
+          book_image: "/media/dashboard/404_book.png",
+        },
+      ];
     }
   } catch (error) {
-    return "Unable to get best sellers today :(";
+    return [
+      {
+        title: "Oh No!",
+        author: "Cannot get books",
+        rank: "?",
+        book_image: "/media/dashboard/404_book.png",
+      },
+    ];
   }
 }
