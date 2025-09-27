@@ -13,4 +13,8 @@ router.get("/library", (req, res) => {
   res.render("library");
 });
 
+router.get("/updateUser", (req, res) => {
+  res.render("updateUser");
+});
+
 export default router;
