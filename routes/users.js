@@ -1,4 +1,6 @@
 import express from "express";
+import { updateUser } from "../controllers/users/usersController.js";
+import { authenticateUser } from "../middleware/authenticateUser.js";
 const router = express.Router();
 
 router.get("/dashboard", (req, res) => {
@@ -16,5 +18,7 @@ router.get("/library", (req, res) => {
 router.get("/updateUser", (req, res) => {
   res.render("updateUser");
 });
+
+router.patch("/updateUser", authenticateUser, updateUser);
 
 export default router;
