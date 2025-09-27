@@ -6,22 +6,62 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome</title>
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
+
+
 <body>
-  <h1>Landing Page</h1>
-  <a href="/users/library">Library</a>
-  <a href="/books/createBook">Add Book</a>
+  <div id="welcome_container">
+    <h2>Welcome to</h2>
+    <h1>ReadQuest</h1>
+  </div>
+
+  <main>
+    <aside id="best_sellers_container">
+
+    </aside>
+
+    <div id="content_container">
+      <div class="options_container">
+        <div class="library_div link_div">
+          <a href="/users/library">Library</a>
+        </div>
+
+        <div class="create_book_div link_div">
+          <a href="/books/createBook">Add Book</a>
+        </div>
+
+        <div class="edit_account_div link_div">
+          <a href="/books/createBook">Add Book</a>
+        </div>
+      </div>
+
+      <div class="api_container">
+        <div id="quote_container">
+          <h2 id="quote"></h2>
+          <h3 id="quotedBy"></h3>
+        </div>
+        <div id="weather_container">
+          <h2 id="quote"></h2>
+          <h3 id="quotedBy"></h3>
+        </div>
+      </div>
+    </div>
+  </main>
   <button id="logout_button">Log out</button>
 
-  <div id="quote_container">
-    <h2 id="quote"></h2>
-    <h3 id="quotedBy"></h3>
-  </div>
+
+
 
 
   <script type="module" src="/js/auth/logout/logout.js"></script>
   <script type="module" src="/js/dashboard/index.js"></script>
+
 </body>
 
 </html>
