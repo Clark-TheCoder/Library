@@ -49,7 +49,7 @@ main {
 }
 
 #best_sellers_container {
-  background: rgba(255, 255, 255, 0.452);
+  background: #ffffff73;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
@@ -80,6 +80,7 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   gap: 10px;
