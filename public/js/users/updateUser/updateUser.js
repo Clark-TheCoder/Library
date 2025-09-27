@@ -33,11 +33,13 @@ export async function updateUser() {
     const data = await response.json();
 
     if (response.ok) {
-      console.log(" Updated successfully:", data);
+      console.log("Updated successfully:", data.message);
+      alert(data.message);
     } else {
-      alert("Could not update user credentials at this time.");
+      alert(data.message || "Could not update user credentials at this time.");
     }
   } catch (error) {
+    console.error("Update failed:", error);
     window.location.href = "/error";
   }
 }
