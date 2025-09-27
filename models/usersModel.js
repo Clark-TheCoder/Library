@@ -45,3 +45,22 @@ export async function authenticateUser(username, password) {
 
   return userWithoutPassword;
 }
+
+export async function updateUserById(userId, updatedFields) {
+  if (!userId || !updatedFields || Object.keys(updatedFields).length === 0) {
+    return false;
+  }
+
+  const fields = Object.keys(updatedFields);
+  const values = Object.values(updatedFields);
+
+  const clause = fields.map((field) => `${field} = ?`).join(", ");
+  const sql = `UPDATE users SET ${clause} WHERE id = ?`;
+
+  const [result] = await db.execute(sql, [...values, userId]);
+
+  if (result.affectedRows === 0) {
+    return false;
+  }
+  return true;
+}
