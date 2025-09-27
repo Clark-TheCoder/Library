@@ -51,12 +51,14 @@ export function createBookUI(book) {
 
   // Colour the book
   let colours = [
-    "#6E72FF",
-    "#B7BA6A",
-    "#E05D4F",
-    "#F8BDFF",
-    "#8BAFF7",
-    "#CFA1FF",
+    "#6e72ff",
+    "#f8bdff",
+    "#cfa1ff",
+    "#ffe6fa",
+    "#d9f8d6",
+    "#70c9da",
+    "#c06eff",
+    "#8baff7",
   ];
   let randomColour = colours[Math.floor(Math.random() * colours.length)];
   bookDiv.style.backgroundColor = randomColour;
