@@ -10,7 +10,7 @@
 
 body {
   font-family: Quicksand;
-  background-color: #ebedb2;
+  background-color: #d5d6fd;
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -36,9 +36,12 @@ main {
   height: 180px;
   padding: 20px;
   margin: 20px;
-  background-color: #6e72ff;
+  background: rgba(255, 255, 255, 0.452);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
-  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid #6e72ff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .title_container img {
@@ -50,7 +53,7 @@ h1 {
   font-size: clamp(2rem, 8vw, 4rem);
   margin-bottom: 30px;
   animation: blurIn 1s ease forwards;
-  color: #f7ede5;
+  color: #412945;
   text-align: center;
 }
 
@@ -67,7 +70,7 @@ h1 {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid #6e72ff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
