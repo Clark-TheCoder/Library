@@ -22,11 +22,12 @@ body {
   border-radius: 15px;
   border: 1px solid #6e72ff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  padding: 15px;
+  padding: 5px;
 }
 
 #welcome_container h1 {
   font-size: clamp(1rem, 10vw, 4rem);
+
   font-family: "DM Serif Display", serif;
   color: #412945;
 }
@@ -246,7 +247,6 @@ main {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   padding: 15px;
   flex: 1;
@@ -314,6 +314,7 @@ main {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
 }
+
 #logout_button {
   display: inline-block;
   padding: 0.6rem 1.5rem;
