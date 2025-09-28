@@ -55,7 +55,7 @@ main {
   border-radius: 15px;
   border: 1px solid #6e72ff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  padding: 15px;
+  padding: 10px 5px;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   display: flex;
@@ -89,11 +89,12 @@ main {
 
 .book_div img {
   height: 200px;
+  width: 130px;
   object-fit: cover;
 }
 
 .book_text {
-  flex: 1;
+  width: 100px;
 }
 
 .book_text h4 {
@@ -105,20 +106,9 @@ main {
   line-height: 150px;
 }
 
-@container (max-width: 250px) {
+@container (max-width: 300px) {
   .book_text h4 {
     display: none;
-  }
-}
-
-@container (min-width: 250px) {
-  .book_div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 10px;
-    container-type: inline-size;
   }
 }
 
@@ -178,12 +168,17 @@ main {
 }
 
 .create_book_div {
-  background: linear-gradient(135deg, #d9f8d6, #a7df8f, #70c9da);
+  background: linear-gradient(135deg, #cceae8, #8fcfd4, rgb(235, 221, 32));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   padding: 15px;
+  font-family: "Quicksand", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 
 .edit_account_div {
@@ -196,6 +191,29 @@ main {
 }
 
 .link_div {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.link_div a {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  font-size: 2em;
+  letter-spacing: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: Quicksand;
+  color: #6e72ff;
+  border-radius: 50px;
+  padding: 2px 10px;
+  flex: 1;
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -203,24 +221,13 @@ main {
   align-items: center;
 }
 
-.link_div a {
-  height: 100%;
-  width: 100%;
-  font-size: 2em;
-  letter-spacing: 8px;
-  text-decoration: none;
-  font-weight: 400;
-  font-family: Quicksand;
-  color: #4129458b;
-  border-radius: 50px;
-  padding: 2px 10px;
-  flex: 1;
-
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+.link_div img {
+  position: absolute;
+  right: 10px;
+  height: 150px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .link_div:hover {
@@ -265,7 +272,7 @@ main {
 
 #quote {
   font-family: Quicksand;
-  font-size: 2vw;
+  font-size: 3vw;
   font-weight: 100;
   letter-spacing: 1px;
   color: #412945a4;
@@ -306,4 +313,25 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
+}
+#logout_button {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: #b7ba6a;
+  color: white;
+  border: none; /* remove harsh border */
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: Quicksand, sans-serif;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  width: fit-content;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#logout_button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
