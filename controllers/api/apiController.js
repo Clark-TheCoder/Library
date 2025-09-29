@@ -52,3 +52,26 @@ export async function getBestSellers(req, res) {
       .json({ message: "Cannot get the best sellers at this moment." });
   }
 }
+
+export async function getWeather(req, res) {
+  const { lat, long } = req.query;
+
+  try {
+    let response = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${long}?unitGroup=us&key=${process.env.WEATHER_KEY}&contentType=json`
+    );
+
+    const data = await response.json();
+    if (response.ok) {
+      return res.status(200).json(data.days);
+    } else {
+      return res
+        .status(400)
+        .json({ message: "Cannot get your local weather at this time" });
+    }
+
+    return res.status(200).json({ message: "Got to backend!" });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+}
