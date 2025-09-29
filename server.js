@@ -9,7 +9,11 @@ import authRoutes from "./routes/auth.js";
 import bookRoutes from "./routes/books.js";
 import userRoutes from "./routes/users.js";
 import cookieParser from "cookie-parser";
-import { getQuote, getBestSellers } from "./controllers/api/apiController.js";
+import {
+  getQuote,
+  getBestSellers,
+  getWeather,
+} from "./controllers/api/apiController.js";
 
 const app = express();
 app.use(cookieParser());
@@ -48,6 +52,9 @@ app.get("/getQuote", getQuote);
 
 // Best Sellers API
 app.get("/getBestSellers", getBestSellers);
+
+//Weather API
+app.get("/getWeather", getWeather);
 
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
