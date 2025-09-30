@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #6e72ff;
+  background: linear-gradient(135deg, #dbe8ff, #8baff7, #c06eff);
   height: 100vh;
   width: 100vw;
 }
@@ -24,7 +24,7 @@ main {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid #6e72ff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
   display: flex;
@@ -97,9 +97,9 @@ main {
 .welcome_links a {
   display: inline-block;
   padding: 0.6rem 1.5rem;
-  background-color: #b7ba6a;
-  border: 3px solid white;
-  color: white;
+  background-color: #d5d6fd;
+  border: 1px solid #6e72ff;
+  color: #412945;
   text-decoration: none;
   border-radius: 999px;
   font-family: Quicksand;
@@ -111,7 +111,8 @@ main {
 }
 
 .welcome_links a:hover {
-  background-color: #8baff7;
+  border: 2px solid #6e72ff;
+  scale: 1.02;
 }
 
 @media (max-height: 600px) {
