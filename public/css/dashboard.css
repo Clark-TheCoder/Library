@@ -10,7 +10,7 @@ body {
   background-color: #d5d6fd;
   height: 100vh;
   width: 100vw;
-  padding: 50px;
+  padding: 20px;
 }
 
 #welcome_container {
@@ -394,6 +394,7 @@ main {
   letter-spacing: 1px;
   color: #412945a4;
 }
+
 .weather_text h5 {
   font-size: 1em;
   margin: 0;
@@ -416,4 +417,10 @@ main {
   max-height: 100%;
   object-fit: contain;
   opacity: 0.8;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+  grid-column: 1 / -1;
 }
