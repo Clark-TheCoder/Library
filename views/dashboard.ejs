@@ -13,8 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
-
-
 <body>
   <div id="welcome_container">
     <h2>Welcome to</h2>
@@ -29,15 +27,19 @@
     <div id="content_container">
       <div class="options_container">
         <div class="library_div link_div">
-          <a href="/users/library">Library</a>
+          <a href="/users/library">Your Library</a>
+          <img src="/media/dashboard/link_img3.png" alt="">
         </div>
+
 
         <div class="create_book_div link_div">
           <a href="/books/createBook">Add Book</a>
+          <img src="/media/dashboard/link_img2.png" alt="">
         </div>
 
         <div class="edit_account_div link_div">
           <a href="/users/updateUser">Account</a>
+          <img src="/media/dashboard/link_img1.png" alt="">
         </div>
       </div>
 
@@ -46,18 +48,28 @@
           <h2 id="quote"></h2>
           <h3 id="quotedBy"></h3>
         </div>
+
         <div id="weather_container">
-          <h2 id="quote"></h2>
-          <h3 id="quotedBy"></h3>
+          <h3 id="status"></h3>
+          <div class="weather_info_container">
+            <div class="weather_text">
+              <div class="num_of_day_div">
+                <h2 id="num_until"></h2>
+                <h5 class="days_text"></h5>
+              </div>
+              <h4 id="weather"></h4>
+            </div>
+            <div class="weather_img_container">
+              <img id="weather_img" src="" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div classs="button_container">
+      <button id="logout_button">Log out</button>
+    </div>
   </main>
-  <button id="logout_button">Log out</button>
-
-
-
-
 
   <script type="module" src="/js/auth/logout/logout.js"></script>
   <script type="module" src="/js/dashboard/index.js"></script>
