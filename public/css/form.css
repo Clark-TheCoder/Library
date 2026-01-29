@@ -80,7 +80,7 @@ input {
 .submit_btn {
   padding: 0.6rem 1.5rem;
   background-color: #b7ba6a;
-  border: 3px solid white;
+  border: none;
   border-radius: 999px;
   color: white;
   font-weight: 500;

@@ -141,13 +141,22 @@ h1 {
 }
 
 .addBook_link {
+  margin-top: 20px;
+  padding: 0.8rem 1.5rem;
+  background-color: #b7ba6a;
+  border-radius: 999px;
+  border: none;
   color: white;
-  font-weight: bold;
-  padding: 10px;
-  background-color: #0e2b3e7f;
-  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  align-self: center;
+  width: auto;
+  white-space: nowrap;
+  font-weight: 600;
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  font-family: Quicksand;
+}
+
+.addBook_link:hover {
+  background-color: #8baff7;
+  transform: translateY(-2px);
 }
