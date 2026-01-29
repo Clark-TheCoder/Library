@@ -1,32 +1,61 @@
 # ReadQuest: Store, rate, and review your reads
 
-Full-stack application that lets users track and rate what they have read. Users can create an account and store books in their "book shelf" where they can see and view past books they have read.
+Full-stack application that lets users track and rate what they have read. Users can create an account and store books in their "book shelf" where they can view, edit, rate and delete books they have read.
 
-On the user's dashboard are three APIS:
+## Purpose
 
-- One which shows users the top 10 books according to the New York Times Bestsellers list
+ReadQuest is a full-stack app designed to practice integrating multiple third-party APIs and managing CRUD operations for users’ book collections.
+
+![Home Page Example](./public/media/READMEphotos/LoginPage.png)
+
+## Key Features
+
+- User authentication with JWT & cookies
+- Personal bookshelf to create, edit, rate, and delete books (CRUD Application)
+- NYT Top 10 Best Sellers integration
+- Random daily reading quotes
+- Weather-based reading suggestions
+- Secure user-specific data storage
+
+# APIs
+
+## On the user's dashboard are three APIs:
+
+- One which shows users the top 10 books according to the New York Times Bestsellers list.
 - A second API which genertes a random quote.
 - And a third API that gets the weather in their area and tells them what day it will be a good day to read (Example: Rainy day in 3 days, great time to read!).
 
-![Home Page Example](./media/READMEphotos/LoginPage.png)
+## Image of APIs:
 
-#### Image of APIS:
+![API Demo Screenshot](./public/media/READMEphotos/API_Image.png)
 
-![API Demo Screenshot](./media/READMEphotos/API_Image.png)
+# Tech:
 
-## Tech
+### Tech Stack
 
-### Coding Stack
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** Node.js, Express
+- **Database:** MySQL
+- **Authentication:** JWT & cookies
+- **APIs:** NYT Bestsellers, NYT Daily Quote, Weather
 
-- JS
-- HTML/CSS
-- Node.js
-- Express
-- MySQL
+### Other
 
-### APIS/Other
+- JWT Authenication and cookies
+- CRUD application
 
-- NYT Best Sellers API
-- NYT Daily Quote API
-- Weather API
-- JWT and cookies
+# Extra Extra! Read all about it!
+
+## View bookshelf:
+
+![User's Book Shelf](./public/media/READMEphotos/BookShelf.png)
+
+## Create a book:
+
+![Create Book Page](./public/media/READMEphotos/CreateBook.png)
+
+## View a book:
+
+#### Options to edit, delete, or return to book shelf
+
+![Create Book Page](./public/media/READMEphotos/ViewBook.png)
